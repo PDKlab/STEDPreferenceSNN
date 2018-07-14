@@ -1,0 +1,1 @@
+{"nb_epochs": 100, "batch_size": 128, "margin": 0.1, "random_state": 42, "cuda": false, "train_mean": 0.5741758793587288, "train_std": 1.2084423360229406, "early_stop": 10, "timestamp": 1530505964.4864848}
