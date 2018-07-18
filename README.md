@@ -64,10 +64,8 @@ You have two choices to start the server:
 
 ### Using the virtual API
 
-Once a server is started, you can talk to it with the virtual `VirtualNet` API .
+Once a server is started, you can talk to it with the virtual `VirtualNet` API . `src/models/virtual.py` provides an interface example for interacting with the deployed model. It can be used in the following way:
 
-- Copy the file `src/models/virtual.py` file in your code repository.
-- Import the VirtualNet in your code with the line `from virtual import VirtualNet`.
 - Instanciate a `VirtualNet` with an ip address and you can use its `.predict(set)` method.
 - `set` should be a set of objective to evaluate.
 
