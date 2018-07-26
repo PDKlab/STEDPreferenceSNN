@@ -19,6 +19,8 @@ app = Flask(__name__)
 def get_good_pair():
     data = json.loads(request.data.decode('utf-8'))
     pair_set = np.array(data['pair_set']).astype(data['type'])
+    pair_set -= mean
+    pair_set /= std
     good_pair = int(np.argmax(model.predict(pair_set)))
     return json.dumps({'good_pair':good_pair}), 200, {'ContentType':'application/json'}
 
