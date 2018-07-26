@@ -85,8 +85,8 @@ if __name__ == '__main__':
     valid_flatten = flatten_dataset(validset[0], validset[1], random_state=args.random_state)
     test_flatten = flatten_dataset(testset[0], testset[1], random_state=args.random_state)
 
-    train_mean = np.mean(train_flatten)
-    train_std = np.std(train_flatten)
+    train_mean = np.mean(train_flatten, axis=(0,1))
+    train_std = np.std(train_flatten, axis=(0,1))
 
     train_flatten = (train_flatten - train_mean) / train_std
     valid_flatten = (valid_flatten - train_mean) / train_std
@@ -99,8 +99,8 @@ if __name__ == '__main__':
         'margin': args.margin,
         'random_state': args.random_state,
         'cuda': args.cuda,
-        'train_mean': float(train_mean),
-        'train_std': float(train_std),
+        'train_mean': [float(t) for t in train_mean],
+        'train_std': [float(t) for t in train_std],
         'early_stop': early_stop,
         }
 
