@@ -75,6 +75,7 @@ if __name__ == '__main__':
     X, y = load_dataset(args.data_path)
 
     nb_obj = X[0].shape[-1]
+    print("With {} objectives".format(nb_obj))
 
     trainset, validset, testset = train_valid_test_split(X, y, valid_size=VALID_SIZE,
                                                 test_size=TEST_SIZE, 

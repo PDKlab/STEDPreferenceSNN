@@ -24,7 +24,7 @@ def graph_results(model, subset, location, y, mean, std):
         if i == max_idx_real:
             ax1.scatter(*p[:2], color='green')
             if len(p) == 3:
-                ax1.annotate(f'{p[2]:.4f}', xy=p[:2], xytext=(-20, 20),
+                ax1.annotate('{:.3f}'.format(p[2]*1e6), xy=p[:2], xytext=(-20, 20),
                 textcoords='offset points', ha='right', va='bottom',
                 bbox=dict(boxstyle='round,pad=0.5', fc='yellow', alpha=0.5),
                 arrowprops=dict(arrowstyle = '->', connectionstyle='arc3,rad=0'))
@@ -39,7 +39,7 @@ def graph_results(model, subset, location, y, mean, std):
         if i == max_idx_predict:
             ax2.scatter(*p[:2], color='green')
             if len(p) == 3:
-                ax2.annotate(f'{p[2]:.4f}', xy=p[:2], xytext=(-20, 20),
+                ax2.annotate('{:.3f}'.format(p[2]*1e6), xy=p[:2], xytext=(-20, 20),
                 textcoords='offset points', ha='right', va='bottom',
                 bbox=dict(boxstyle='round,pad=0.5', fc='yellow', alpha=0.5),
                 arrowprops=dict(arrowstyle = '->', connectionstyle='arc3,rad=0'))
@@ -98,6 +98,6 @@ if __name__ == '__main__':
 
     test_sets_idx = list(range(len(testset[0])))
     random.shuffle(test_sets_idx)
-    for i in test_sets_idx[:10]:
+    for i in test_sets_idx[:50]:
         location = os.path.join(figuredir, 'test-set-{}.pdf'.format(i))
         graph_results(model, testset[0][i], location, testset[1][i], train_mean, train_std)
