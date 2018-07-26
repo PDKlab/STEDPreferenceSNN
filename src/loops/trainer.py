@@ -13,13 +13,15 @@ from .batcher import batch_it
 
 
 def train(model, train_data, valid_data, nb_epochs, batch_size, margin, cuda=False, early_stop=10):
-    optimizer = optim.Adam(model.parameters()) ## TODO: more flexible
+    if cuda:
+        model = model.cuda()
+    optimizer = optim.Adam(model.parameters(), lr=0.01) ## TODO: more flexible
     criterion = HingeLoss(margin)
     train_losses, valid_losses = [], []
     min_valid_loss = np.inf
     early_stop_cnt = 0
-    if cuda:
-        model.cuda()
+    #if cuda:
+    #    model.cuda()
     start = time.time()
     for i_epoch in range(nb_epochs):
         tlosses = []
