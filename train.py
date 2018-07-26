@@ -87,6 +87,7 @@ if __name__ == '__main__':
 
     train_mean = np.mean(train_flatten, axis=(0,1))
     train_std = np.std(train_flatten, axis=(0,1))
+    #train_std[0] /= 5       # If we want to give more importance to the quality
 
     train_flatten = (train_flatten - train_mean) / train_std
     valid_flatten = (valid_flatten - train_mean) / train_std
