@@ -19,7 +19,7 @@ app = Flask(__name__)
 def get_good_pair():
     data = json.loads(request.data.decode('utf-8'))
     pair_set = np.array(data['pair_set']).astype(data['type'])
-    good_pair = int(np.argmax(net.predict(pair_set)))
+    good_pair = int(np.argmax(model.predict(pair_set)))
     return json.dumps({'good_pair':good_pair}), 200, {'ContentType':'application/json'}
 
 if __name__ == '__main__':
@@ -38,7 +38,7 @@ if __name__ == '__main__':
     mean = config['train_mean']
     std = config['train_std']
 
-    model = PrefNet(nb_obj=nb_obj)
+    model = PrefNet(nb_obj=3)
     model.load_state_dict(torch.load(os.path.join(xp_folder, 'weights.t7')))
     model.eval()
 
